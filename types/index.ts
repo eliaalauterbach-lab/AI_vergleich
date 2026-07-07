@@ -44,3 +44,32 @@ export interface ModelDetail extends LeaderboardEntry {
   pros_cons: ProCon[];
   scores: BenchmarkScore[];
 }
+
+export interface PromptCategory {
+  slug: string;
+  name: string;
+  count: number;
+}
+
+export interface PromptSummary {
+  id: string;
+  slug: string;
+  title: string;
+  description: string | null;
+  category_slug: string | null;
+  category_name: string | null;
+  author_name: string | null;
+  upvotes: number;
+  fork_count: number;
+  score: number;                       // upvotes - downvotes
+  tags: string[];
+  created_at: string;
+}
+
+export interface PromptDetail extends PromptSummary {
+  body: string;                        // der eigentliche Prompt-Text
+  recommended_model_slug: string | null;
+  recommended_model_name: string | null;
+  forked_from_slug: string | null;
+  forked_from_title: string | null;
+}
