@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import Link from "next/link";
 import { ArrowBigUp, GitFork } from "lucide-react";
+import { togglePromptUpvote } from "@/app/actions";
 
 /**
  * Upvote- & Fork-Aktionen.
@@ -19,12 +20,20 @@ export function PromptActions({
   forkCount: number;
 }) {
   const [voted, setVoted] = useState(false);
-  const [hint, setHint] = useState(false);
+  const [hint, setHint] = useState("");
+  const [pending, startTransition] = useTransition();
 
   function toggleVote() {
-    setVoted((v) => !v);
-    setHint(true);
-    setTimeout(() => setHint(false), 2600);
+    startTransition(async () => {
+      const res = await togglePromptUpvote(slug);
+      if (res.ok) {
+        setVoted((v) => !v);
+        setHint("");
+      } else {
+        setHint(res.error ?? "Fehler.");
+        setTimeout(() => setHint(""), 3000);
+      }
+    });
   }
 
   return (
@@ -32,7 +41,8 @@ export function PromptActions({
       <div className="flex items-center gap-2">
         <button
           onClick={toggleVote}
-          className={`inline-flex items-center gap-1.5 rounded-lg border px-3.5 py-2 text-sm font-medium transition-colors ${
+          disabled={pending}
+          className={`inline-flex items-center gap-1.5 rounded-lg border px-3.5 py-2 text-sm font-medium transition-colors disabled:opacity-60 ${
             voted
               ? "border-accent/50 bg-accent/20 text-accent-soft"
               : "border-border bg-surface text-subtle hover:bg-elevate"
@@ -53,11 +63,7 @@ export function PromptActions({
         </Link>
       </div>
 
-      {hint && (
-        <p className="text-xs text-accent-soft">
-          Dein Vote wird gespeichert, sobald die Anmeldung aktiv ist (nächster Schritt).
-        </p>
-      )}
+      {hint && <p className="text-xs text-accent-soft">{hint}</p>}
     </div>
   );
 }

@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { GitFork, Info } from "lucide-react";
+import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { GitFork, Info, Loader2 } from "lucide-react";
+import { submitPrompt } from "@/app/actions";
 
 const CATEGORIES = [
   { slug: "text", name: "Text" },
@@ -34,13 +36,28 @@ export function SubmitPromptForm({
   const [description, setDescription] = useState("");
   const [body, setBody] = useState(initialBody);
   const [tags, setTags] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [result, setResult] = useState<{ ok: boolean; error?: string } | null>(null);
+  const [pending, startTransition] = useTransition();
+  const router = useRouter();
 
   const valid = title.trim().length > 2 && body.trim().length > 10 && category;
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    if (!valid) return;
+    setResult(null);
+    startTransition(async () => {
+      const res = await submitPrompt({
+        title,
+        body,
+        categorySlug: category,
+        description,
+        tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
+        forkOfSlug: forkOf?.slug ?? null,
+      });
+      setResult(res);
+      if (res.ok) setTimeout(() => router.push("/prompts"), 1200);
+    });
   }
 
   return (
@@ -101,9 +118,10 @@ export function SubmitPromptForm({
       <div className="flex items-center gap-3 pt-1">
         <button
           type="submit"
-          disabled={!valid}
-          className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-40"
+          disabled={!valid || pending}
+          className="inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-40"
         >
+          {pending && <Loader2 size={15} className="animate-spin" />}
           {forkOf ? "Fork veröffentlichen" : "Prompt veröffentlichen"}
         </button>
         {!valid && (
@@ -111,13 +129,17 @@ export function SubmitPromptForm({
         )}
       </div>
 
-      {submitted && (
+      {result?.ok && (
+        <div className="flex items-start gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-400">
+          <Info size={15} className="mt-0.5 shrink-0" />
+          <span>Veröffentlicht! Du wirst zur Bibliothek weitergeleitet …</span>
+        </div>
+      )}
+
+      {result && !result.ok && (
         <div className="flex items-start gap-2 rounded-xl border border-accent/30 bg-accent-dim px-4 py-3 text-sm text-accent-soft">
           <Info size={15} className="mt-0.5 shrink-0" />
-          <span>
-            Alles bereit! Das Speichern wird mit der Anmeldung aktiviert (nächster
-            Entwicklungsschritt). Dann landet dein Prompt direkt in der Bibliothek.
-          </span>
+          <span>{result.error}</span>
         </div>
       )}
     </form>

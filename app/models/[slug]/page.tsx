@@ -7,6 +7,8 @@ import { StarRating } from "@/components/ui/StarRating";
 import { ProsCons } from "@/components/models/ProsCons";
 import { BenchmarkList } from "@/components/models/BenchmarkList";
 import { CostCalculator } from "@/components/models/CostCalculator";
+import { RateModel } from "@/components/models/RateModel";
+import { getUser, isAuthEnabled } from "@/lib/auth";
 import {
   formatPrice,
   formatTps,
@@ -35,7 +37,7 @@ export async function generateMetadata({
 }
 
 export default async function ModelPage({ params }: { params: { slug: string } }) {
-  const model = await getModel(params.slug);
+  const [model, user] = await Promise.all([getModel(params.slug), getUser()]);
   if (!model) notFound();
 
   return (
@@ -104,9 +106,9 @@ export default async function ModelPage({ params }: { params: { slug: string } }
                 </p>
               </div>
             </div>
-            <p className="mt-4 text-xs text-muted">
-              Melde dich an, um dieses Modell zu bewerten. (Auth folgt im nächsten Schritt.)
-            </p>
+            <div className="mt-4 border-t border-border pt-4">
+              <RateModel slug={model.slug} canRate={!!user} authEnabled={isAuthEnabled()} />
+            </div>
           </section>
         </div>
 
