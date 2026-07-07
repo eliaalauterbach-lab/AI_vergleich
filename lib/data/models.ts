@@ -97,7 +97,7 @@ const bench = (
   normalized: norm,
 });
 
-const DEMO_ENRICHMENT: Record<string, Enrichment> = {
+export const DEMO_ENRICHMENT: Record<string, Enrichment> = {
   "claude-opus": {
     description:
       "Flaggschiff-Modell mit herausragender Leistung bei komplexem Reasoning, langen Kontexten und Code. Gilt als besonders zuverlässig bei vielschichtigen Aufgaben und liefert nuancierte, gut strukturierte Antworten.",

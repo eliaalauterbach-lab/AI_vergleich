@@ -95,3 +95,16 @@ export interface ArenaEloEntry {
   rating: number;
   games: number;
 }
+
+export interface FinderCandidate {
+  slug: string;
+  name: string;
+  provider_name: string | null;
+  modalities: Modality[];
+  license: string;
+  performance_score: number | null;   // 0-100
+  price_input_usd: number | null;      // USD / 1M
+  price_output_usd: number | null;
+  throughput_tps: number | null;
+  context_window: number | null;
+}
