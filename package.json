@@ -1,5 +1,5 @@
 {
-  "name": "ai-vergleich",
+  "name": "modelist",
   "version": "0.1.0",
   "private": true,
   "description": "Performance-basiertes Vergleichssystem für KI-Modelle (Text, Video, Code, Musik, Research ...)",

@@ -21,3 +21,90 @@ export interface LeaderboardEntry {
   price_output_usd: number | null;
   throughput_tps: number | null;       // Tokens/Sekunde
 }
+
+export interface BenchmarkScore {
+  benchmark_slug: string;
+  benchmark_name: string;
+  unit: string | null;
+  raw_score: number;
+  normalized: number | null;           // 0-100
+}
+
+export interface ProCon {
+  kind: "pro" | "con";
+  text: string;
+}
+
+export interface ModelDetail extends LeaderboardEntry {
+  description: string | null;
+  license: string;                     // proprietary | open_weight | ...
+  context_window: number | null;       // Tokens
+  release_date: string | null;
+  latency_ms: number | null;
+  pros_cons: ProCon[];
+  scores: BenchmarkScore[];
+}
+
+export interface PromptCategory {
+  slug: string;
+  name: string;
+  count: number;
+}
+
+export interface PromptSummary {
+  id: string;
+  slug: string;
+  title: string;
+  description: string | null;
+  category_slug: string | null;
+  category_name: string | null;
+  author_name: string | null;
+  upvotes: number;
+  fork_count: number;
+  score: number;                       // upvotes - downvotes
+  tags: string[];
+  created_at: string;
+}
+
+export interface PromptDetail extends PromptSummary {
+  body: string;                        // der eigentliche Prompt-Text
+  recommended_model_slug: string | null;
+  recommended_model_name: string | null;
+  forked_from_slug: string | null;
+  forked_from_title: string | null;
+}
+
+export interface ArenaContender {
+  slug: string;
+  name: string;
+  response: string;
+}
+
+export interface ArenaBattle {
+  id: string;
+  category_name: string;
+  prompt: string;
+  a: ArenaContender;
+  b: ArenaContender;
+}
+
+export interface ArenaEloEntry {
+  slug: string;
+  name: string;
+  provider_name: string | null;
+  rating: number;
+  games: number;
+}
+
+export interface FinderCandidate {
+  slug: string;
+  name: string;
+  provider_name: string | null;
+  modalities: Modality[];
+  license: string;
+  performance_score: number | null;   // 0-100
+  price_input_usd: number | null;      // USD / 1M
+  price_output_usd: number | null;
+  throughput_tps: number | null;
+  context_window: number | null;
+}

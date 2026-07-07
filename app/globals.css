@@ -5,9 +5,30 @@
 :root {
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Farb-Tokens als RGB-Kanäle (Light-Mode = Standard) */
+  --c-base: 249 250 251;
+  --c-surface: 255 255 255;
+  --c-elevate: 241 242 245;
+  --c-border: 224 226 232;
+  --c-muted: 100 103 115;
+  --c-subtle: 55 58 69;
+  --c-foreground: 17 18 22;
+  --c-accent-soft: 91 77 219;
+
+  color-scheme: light;
 }
 
-html {
+.dark {
+  --c-base: 10 10 11;
+  --c-surface: 20 20 22;
+  --c-elevate: 28 28 32;
+  --c-border: 38 38 43;
+  --c-muted: 138 138 148;
+  --c-subtle: 180 180 190;
+  --c-foreground: 255 255 255;
+  --c-accent-soft: 169 155 255;
+
   color-scheme: dark;
 }
 

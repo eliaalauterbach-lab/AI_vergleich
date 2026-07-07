@@ -29,7 +29,7 @@ export default async function HomePage({
           <Sparkles size={13} className="text-accent-soft" />
           Automatisch aktuell · via Hugging Face &amp; OpenRouter
         </span>
-        <h1 className="text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
           Die Rangliste der{" "}
           <span className="bg-gradient-to-r from-accent-soft to-accent bg-clip-text text-transparent">
             KI-Modelle
@@ -92,7 +92,7 @@ function QuickLink({
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm text-subtle transition-colors hover:border-accent/40 hover:text-white"
+      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm text-subtle transition-colors hover:border-accent/40 hover:text-foreground"
     >
       {icon}
       {label}

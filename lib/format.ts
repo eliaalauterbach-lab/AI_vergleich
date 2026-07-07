@@ -17,3 +17,19 @@ const MODALITY_LABEL: Record<string, string> = {
 };
 
 export const modalityLabel = (m: string): string => MODALITY_LABEL[m] ?? m;
+
+const LICENSE_LABEL: Record<string, string> = {
+  proprietary: "Proprietär",
+  open_weight: "Open Weight",
+  open_source: "Open Source",
+  unknown: "Unbekannt",
+};
+
+export const licenseLabel = (l: string): string => LICENSE_LABEL[l] ?? l;
+
+export function formatTokens(n: number | null): string {
+  if (n == null) return "—";
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n % 1_000_000 === 0 ? 0 : 1)} Mio.`;
+  if (n >= 1_000) return `${Math.round(n / 1000)}k`;
+  return String(n);
+}

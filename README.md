@@ -1,11 +1,11 @@
-# AI-Vergleich
+# Modelist
 
 Performance-basiertes Vergleichssystem für KI-Modelle jeder Art — **Text, Code,
 Bild, Video, Musik, Research & Marketing**. Ranglisten nach Leistung,
 Modell-Steckbriefe mit Community-Bewertung, eine „Wikipedia für Prompts" mit
 Forking, sowie Blind-Test-Arena und AI-Finder.
 
-> Serverless · Dark-Mode · PWA · hält sich über APIs selbst aktuell.
+> Serverless · Hell/Dunkel (nach Geräte-Einstellung) · PWA · hält sich über APIs selbst aktuell.
 
 ## Tech-Stack
 
@@ -47,7 +47,28 @@ supabase db push
 aufgerufen (`vercel.json`) und synchronisiert Modelle/Preise von OpenRouter und
 Hugging Face. Absicherung über `CRON_SECRET` (Bearer-Token).
 
+## Live schalten (Konten & Deploy)
+
+Schritt-für-Schritt-Anleitung ohne Vorwissen (Supabase + Vercel + Login +
+Automatisierung): **[`docs/SETUP.md`](docs/SETUP.md)**.
+
+Sobald die beiden `NEXT_PUBLIC_SUPABASE_*`-Variablen gesetzt sind, schalten sich
+Login und echtes Speichern (Bewertungen, Prompts, Votes) automatisch ein.
+
+## Funktionsumfang
+
+- **Rangliste** (`/`) — performance-basiert, mit Kategorie-Filter
+- **Steckbriefe** (`/models/[slug]`) — Stärken/Schwächen, Benchmarks,
+  Community-Sterne, Live-Kosten-/Speed-Rechner
+- **Prompt-Bibliothek** (`/prompts`) — kategorisiert, Kopieren, Forking, Upvote,
+  Einreichen
+- **Blind-Test-Arena** (`/arena`) — anonymes Voting + Elo-Rangliste
+- **AI-Finder** (`/finder`) — geführte Modell-Empfehlung
+- **Login** (`/login`) — Magic Link (Supabase Auth)
+- **PWA** — installierbar auf Desktop & Smartphone
+
 ## Projektstatus
 
-Erstes technisches Fundament: Stack, DB-Schema und die Startseiten-Rangliste
-stehen. Roadmap in `docs/ARCHITECTURE.md`.
+Voll funktionsfähiges Frontend mit Demo-Daten; Auth und Schreibpfade sind
+verdrahtet und aktivieren sich mit der Supabase-Verbindung. Roadmap &
+Architektur in `docs/ARCHITECTURE.md`.

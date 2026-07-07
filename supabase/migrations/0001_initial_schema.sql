@@ -1,5 +1,5 @@
 -- =============================================================================
--- AI-Vergleich · Initiales Datenbank-Schema (PostgreSQL / Supabase)
+-- Modelist · Initiales Datenbank-Schema (PostgreSQL / Supabase)
 -- Migration 0001
 --
 -- Deckt die Grundpfeiler ab:

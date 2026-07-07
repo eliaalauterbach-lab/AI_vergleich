@@ -13,19 +13,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Hintergrund-Ebenen (edel, schlicht)
-        base:    "#0a0a0b",   // App-Hintergrund
-        surface: "#141416",   // Karten
-        elevate: "#1c1c20",   // Hover / erhöhte Elemente
-        border:  "#26262b",
+        // Hintergrund-Ebenen – theme-abhängig über CSS-Variablen
+        base:    "rgb(var(--c-base) / <alpha-value>)",     // App-Hintergrund
+        surface: "rgb(var(--c-surface) / <alpha-value>)",  // Karten
+        elevate: "rgb(var(--c-elevate) / <alpha-value>)",  // Hover / erhöht
+        border:  "rgb(var(--c-border) / <alpha-value>)",
         // Text
-        muted:   "#8a8a94",
-        subtle:  "#b4b4be",
-        // Akzent
+        muted:      "rgb(var(--c-muted) / <alpha-value>)",
+        subtle:     "rgb(var(--c-subtle) / <alpha-value>)",
+        foreground: "rgb(var(--c-foreground) / <alpha-value>)", // starke Überschriften
+        // Akzent (Violett bleibt in beiden Themes gleich)
         accent: {
           DEFAULT: "#7c6cf4",
-          soft:    "#a99bff",
-          dim:     "rgba(124,108,244,0.12)",
+          soft:    "rgb(var(--c-accent-soft) / <alpha-value>)",
+          dim:     "rgb(124 108 244 / 0.12)",
         },
         // Rang-Metallik
         gold:   "#e8b64c",
