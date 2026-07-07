@@ -21,3 +21,26 @@ export interface LeaderboardEntry {
   price_output_usd: number | null;
   throughput_tps: number | null;       // Tokens/Sekunde
 }
+
+export interface BenchmarkScore {
+  benchmark_slug: string;
+  benchmark_name: string;
+  unit: string | null;
+  raw_score: number;
+  normalized: number | null;           // 0-100
+}
+
+export interface ProCon {
+  kind: "pro" | "con";
+  text: string;
+}
+
+export interface ModelDetail extends LeaderboardEntry {
+  description: string | null;
+  license: string;                     // proprietary | open_weight | ...
+  context_window: number | null;       // Tokens
+  release_date: string | null;
+  latency_ms: number | null;
+  pros_cons: ProCon[];
+  scores: BenchmarkScore[];
+}
