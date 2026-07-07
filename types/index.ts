@@ -73,3 +73,25 @@ export interface PromptDetail extends PromptSummary {
   forked_from_slug: string | null;
   forked_from_title: string | null;
 }
+
+export interface ArenaContender {
+  slug: string;
+  name: string;
+  response: string;
+}
+
+export interface ArenaBattle {
+  id: string;
+  category_name: string;
+  prompt: string;
+  a: ArenaContender;
+  b: ArenaContender;
+}
+
+export interface ArenaEloEntry {
+  slug: string;
+  name: string;
+  provider_name: string | null;
+  rating: number;
+  games: number;
+}
