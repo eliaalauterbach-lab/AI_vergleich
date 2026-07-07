@@ -72,7 +72,7 @@ export function Finder({ candidates }: { candidates: FinderCandidate[] }) {
                   : "border-border bg-surface hover:bg-elevate"
               }`}
             >
-              <div className="font-medium text-white">{p.label}</div>
+              <div className="font-medium text-foreground">{p.label}</div>
               <div className="text-xs text-muted">{p.hint}</div>
             </button>
           ))}
@@ -201,7 +201,7 @@ function Result({ result, onReset }: { result: ScoredCandidate[]; onReset: () =>
         </div>
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 className="text-2xl font-bold text-white">{top.name}</h2>
+            <h2 className="text-2xl font-bold text-foreground">{top.name}</h2>
             <p className="text-sm text-muted">{top.provider_name}</p>
           </div>
           <Link
@@ -237,7 +237,7 @@ function Result({ result, onReset }: { result: ScoredCandidate[]; onReset: () =>
                 className="card flex items-center justify-between gap-3 p-4 transition-colors hover:bg-elevate"
               >
                 <div>
-                  <div className="font-semibold text-white">{c.name}</div>
+                  <div className="font-semibold text-foreground">{c.name}</div>
                   <div className="mt-0.5 flex flex-wrap gap-1.5">
                     {c.reasons.slice(0, 2).map((r) => (
                       <span key={r} className="text-xs text-muted">{r}</span>
@@ -255,7 +255,7 @@ function Result({ result, onReset }: { result: ScoredCandidate[]; onReset: () =>
 
       <button
         onClick={onReset}
-        className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-white"
+        className="inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
       >
         <RotateCcw size={14} />
         Neu starten
@@ -268,7 +268,7 @@ function Metric({ label, value }: { label: string; value: string }) {
   return (
     <div>
       <dt className="text-xs text-muted">{label}</dt>
-      <dd className="mt-0.5 font-semibold tabular-nums text-white">{value}</dd>
+      <dd className="mt-0.5 font-semibold tabular-nums text-foreground">{value}</dd>
     </div>
   );
 }
@@ -284,7 +284,7 @@ function Question({
 }) {
   return (
     <div>
-      <h2 className="mb-3 flex items-center gap-2 font-semibold text-white">
+      <h2 className="mb-3 flex items-center gap-2 font-semibold text-foreground">
         <span className="grid h-6 w-6 place-items-center rounded-full bg-elevate text-xs text-accent-soft">
           {step}
         </span>

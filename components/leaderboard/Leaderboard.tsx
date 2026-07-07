@@ -38,7 +38,7 @@ export function Leaderboard({ entries }: { entries: LeaderboardEntry[] }) {
 
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <span className="truncate font-semibold text-white">{entry.name}</span>
+                    <span className="truncate font-semibold text-foreground">{entry.name}</span>
                     <ChevronRight
                       size={15}
                       className="shrink-0 text-muted opacity-0 transition-opacity group-hover:opacity-100"
@@ -73,7 +73,7 @@ export function Leaderboard({ entries }: { entries: LeaderboardEntry[] }) {
                 <RankBadge rank={i + 1} />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="truncate font-semibold text-white">{entry.name}</span>
+                    <span className="truncate font-semibold text-foreground">{entry.name}</span>
                     <ScoreBar score={entry.performance_score} />
                   </div>
                   <div className="mt-1.5 flex items-center justify-between gap-2">

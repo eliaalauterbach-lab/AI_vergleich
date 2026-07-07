@@ -1,4 +1,4 @@
-# AI-Vergleich · Architektur & Tech-Stack
+# Modelist · Architektur & Tech-Stack
 
 Serverless, Pay-per-Use, kosteneffizient. Kein eigener Server, keine Fixkosten
 im Leerlauf — skaliert von 0 bis viral.

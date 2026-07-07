@@ -15,7 +15,7 @@ export default async function FinderPage() {
   return (
     <main className="mx-auto max-w-2xl px-4 pb-24 pt-10 sm:px-6">
       <header className="mb-8">
-        <h1 className="flex items-center gap-2.5 text-3xl font-bold tracking-tight text-white">
+        <h1 className="flex items-center gap-2.5 text-3xl font-bold tracking-tight text-foreground">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent-dim text-accent-soft">
             <Compass size={19} />
           </span>

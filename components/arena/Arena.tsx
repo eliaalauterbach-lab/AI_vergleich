@@ -48,7 +48,7 @@ export function Arena({ battles }: { battles: ArenaBattle[] }) {
           <Swords size={14} className="text-accent-soft" />
           Duell · {battle.category_name}
         </div>
-        <p className="text-lg font-medium text-white">{battle.prompt}</p>
+        <p className="text-lg font-medium text-foreground">{battle.prompt}</p>
       </div>
 
       {/* Antworten */}
@@ -92,7 +92,7 @@ export function Arena({ battles }: { battles: ArenaBattle[] }) {
       )}
 
       <div className="mt-6 text-center">
-        <Link href="#elo" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-white">
+        <Link href="#elo" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-foreground">
           <Trophy size={14} />
           Zur Arena-Rangliste
         </Link>
@@ -150,7 +150,7 @@ function VoteButton({
   return (
     <button
       onClick={onClick}
-      className="rounded-lg border border-border bg-surface px-3 py-2.5 text-sm font-medium text-subtle transition-colors hover:border-accent/40 hover:bg-elevate hover:text-white"
+      className="rounded-lg border border-border bg-surface px-3 py-2.5 text-sm font-medium text-subtle transition-colors hover:border-accent/40 hover:bg-elevate hover:text-foreground"
     >
       {children}
     </button>

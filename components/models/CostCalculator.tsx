@@ -30,7 +30,7 @@ export function CostCalculator({
 
   return (
     <div className="card p-5">
-      <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-white">
+      <h3 className="mb-4 flex items-center gap-2 text-sm font-semibold text-foreground">
         <Calculator size={15} className="text-accent-soft" />
         Kosten- &amp; Speed-Rechner
       </h3>
@@ -114,7 +114,7 @@ function Stat({
         {icon}
         {label}
       </div>
-      <div className="mt-1 text-lg font-semibold tabular-nums text-white">
+      <div className="mt-1 text-lg font-semibold tabular-nums text-foreground">
         {value}
       </div>
     </div>

@@ -37,7 +37,7 @@ export function LoginForm() {
           <Check size={16} />
         </span>
         <div className="text-sm">
-          <p className="font-medium text-white">Prüfe dein Postfach</p>
+          <p className="font-medium text-foreground">Prüfe dein Postfach</p>
           <p className="mt-1 text-muted">
             Wir haben einen Login-Link an <strong className="text-subtle">{email}</strong>{" "}
             geschickt. Klicke ihn an, um dich anzumelden.
@@ -59,7 +59,7 @@ export function LoginForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="du@beispiel.de"
-            className="w-full rounded-lg border border-border bg-surface py-2.5 pl-9 pr-3 text-sm text-white placeholder:text-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40"
+            className="w-full rounded-lg border border-border bg-surface py-2.5 pl-9 pr-3 text-sm text-foreground placeholder:text-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40"
           />
         </div>
       </label>

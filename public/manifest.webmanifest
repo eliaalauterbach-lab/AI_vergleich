@@ -1,6 +1,6 @@
 {
-  "name": "AI-Vergleich · Die Rangliste der KI-Modelle",
-  "short_name": "AI-Vergleich",
+  "name": "Modelist · Die Rangliste der KI-Modelle",
+  "short_name": "Modelist",
   "description": "Performance-basiertes Vergleichssystem für KI-Modelle — Ranglisten, Steckbriefe, Prompt-Bibliothek & Blind-Test-Arena.",
   "start_url": "/",
   "display": "standalone",

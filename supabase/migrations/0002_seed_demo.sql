@@ -1,5 +1,5 @@
 -- =============================================================================
--- AI-Vergleich · Demo-Seed (Migration 0002)
+-- Modelist · Demo-Seed (Migration 0002)
 -- Minimaldatensatz, damit Leaderboard & Steckbriefe sofort etwas anzeigen.
 -- In Produktion werden diese Daten vom Sync-Script (HF/OpenRouter) überschrieben.
 -- =============================================================================

@@ -147,7 +147,7 @@ export function SubmitPromptForm({
 }
 
 const inputCls =
-  "w-full rounded-lg border border-border bg-surface px-3.5 py-2.5 text-sm text-white placeholder:text-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40";
+  "w-full rounded-lg border border-border bg-surface px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-accent/50 focus:outline-none focus:ring-1 focus:ring-accent/40";
 
 function Field({
   label,

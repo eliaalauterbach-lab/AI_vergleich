@@ -13,13 +13,13 @@ export default function LoginPage() {
     <main className="mx-auto flex max-w-md flex-col px-4 pb-24 pt-16 sm:px-6">
       <Link
         href="/"
-        className="mb-8 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-white"
+        className="mb-8 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
       >
         <ArrowLeft size={15} />
         Zur Startseite
       </Link>
 
-      <h1 className="text-2xl font-bold tracking-tight text-white">Anmelden</h1>
+      <h1 className="text-2xl font-bold tracking-tight text-foreground">Anmelden</h1>
       <p className="mt-2 text-sm text-muted">
         Melde dich an, um Modelle zu bewerten, Prompts einzureichen und in der
         Arena abzustimmen. Wir schicken dir einen Login-Link per E-Mail –

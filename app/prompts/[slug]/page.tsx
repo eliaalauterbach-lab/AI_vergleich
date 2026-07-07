@@ -36,7 +36,7 @@ export default async function PromptPage({
     <main className="mx-auto max-w-3xl px-4 pb-24 pt-8 sm:px-6">
       <Link
         href="/prompts"
-        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-white"
+        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
       >
         <ArrowLeft size={15} />
         Zur Bibliothek
@@ -46,7 +46,7 @@ export default async function PromptPage({
       <div className="mb-5">
         <div className="mb-2 flex flex-wrap items-center gap-2">
           {prompt.category_name && (
-            <Link href={`/prompts?cat=${prompt.category_slug}`} className="chip hover:text-white">
+            <Link href={`/prompts?cat=${prompt.category_slug}`} className="chip hover:text-foreground">
               {prompt.category_name}
             </Link>
           )}
@@ -57,7 +57,7 @@ export default async function PromptPage({
             </span>
           )}
         </div>
-        <h1 className="text-3xl font-bold tracking-tight text-white">{prompt.title}</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">{prompt.title}</h1>
         {prompt.description && (
           <p className="mt-2 text-muted">{prompt.description}</p>
         )}
@@ -86,7 +86,7 @@ export default async function PromptPage({
           Abgewandelt von{" "}
           <Link
             href={`/prompts/${prompt.forked_from_slug}`}
-            className="font-medium text-subtle hover:text-white hover:underline"
+            className="font-medium text-subtle hover:text-foreground hover:underline"
           >
             {prompt.forked_from_title}
           </Link>

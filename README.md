@@ -1,11 +1,11 @@
-# AI-Vergleich
+# Modelist
 
 Performance-basiertes Vergleichssystem für KI-Modelle jeder Art — **Text, Code,
 Bild, Video, Musik, Research & Marketing**. Ranglisten nach Leistung,
 Modell-Steckbriefe mit Community-Bewertung, eine „Wikipedia für Prompts" mit
 Forking, sowie Blind-Test-Arena und AI-Finder.
 
-> Serverless · Dark-Mode · PWA · hält sich über APIs selbst aktuell.
+> Serverless · Hell/Dunkel (nach Geräte-Einstellung) · PWA · hält sich über APIs selbst aktuell.
 
 ## Tech-Stack
 

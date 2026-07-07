@@ -27,7 +27,7 @@ export default async function PromptsPage({
       {/* Kopf */}
       <header className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="flex items-center gap-2.5 text-3xl font-bold tracking-tight text-white">
+          <h1 className="flex items-center gap-2.5 text-3xl font-bold tracking-tight text-foreground">
             <span className="grid h-9 w-9 place-items-center rounded-xl bg-accent-dim text-accent-soft">
               <Library size={19} />
             </span>

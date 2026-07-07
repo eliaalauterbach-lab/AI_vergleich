@@ -23,13 +23,13 @@ export default async function NewPromptPage({
     <main className="mx-auto max-w-2xl px-4 pb-24 pt-8 sm:px-6">
       <Link
         href="/prompts"
-        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-white"
+        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
       >
         <ArrowLeft size={15} />
         Zur Bibliothek
       </Link>
 
-      <h1 className="text-3xl font-bold tracking-tight text-white">
+      <h1 className="text-3xl font-bold tracking-tight text-foreground">
         {original ? "Prompt forken" : "Prompt einreichen"}
       </h1>
       <p className="mt-2 text-muted">

@@ -7,7 +7,7 @@ export function ArenaElo({ entries }: { entries: ArenaEloEntry[] }) {
   return (
     <section id="elo" className="card overflow-hidden scroll-mt-20">
       <div className="border-b border-border px-5 py-3">
-        <h2 className="text-sm font-semibold text-white">Arena-Rangliste (Elo)</h2>
+        <h2 className="text-sm font-semibold text-foreground">Arena-Rangliste (Elo)</h2>
         <p className="text-xs text-muted">Aus anonymen Blind-Test-Duellen der Community.</p>
       </div>
       <ul className="divide-y divide-border">
@@ -19,7 +19,7 @@ export function ArenaElo({ entries }: { entries: ArenaEloEntry[] }) {
             >
               <RankBadge rank={i + 1} />
               <div className="min-w-0 flex-1">
-                <div className="truncate font-semibold text-white">{e.name}</div>
+                <div className="truncate font-semibold text-foreground">{e.name}</div>
                 <div className="text-xs text-muted">{e.provider_name ?? "—"}</div>
               </div>
               <div className="text-right">

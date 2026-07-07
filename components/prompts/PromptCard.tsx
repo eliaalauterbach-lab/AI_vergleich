@@ -25,7 +25,7 @@ export function PromptCard({ prompt }: { prompt: PromptSummary }) {
         </div>
       </div>
 
-      <h3 className="font-semibold text-white transition-colors group-hover:text-accent-soft">
+      <h3 className="font-semibold text-foreground transition-colors group-hover:text-accent-soft">
         {prompt.title}
       </h3>
       {prompt.description && (

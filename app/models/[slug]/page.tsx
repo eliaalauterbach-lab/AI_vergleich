@@ -44,7 +44,7 @@ export default async function ModelPage({ params }: { params: { slug: string } }
     <main className="mx-auto max-w-5xl px-4 pb-24 pt-8 sm:px-6">
       <Link
         href="/"
-        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-white"
+        className="mb-6 inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
       >
         <ArrowLeft size={15} />
         Zurück zur Rangliste
@@ -54,7 +54,7 @@ export default async function ModelPage({ params }: { params: { slug: string } }
       <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-3xl font-bold tracking-tight text-white">{model.name}</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">{model.name}</h1>
             <span className="chip">{licenseLabel(model.license)}</span>
           </div>
           <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-muted">
@@ -96,7 +96,7 @@ export default async function ModelPage({ params }: { params: { slug: string } }
           <section className="card p-5">
             <SectionTitle>Community-Bewertung</SectionTitle>
             <div className="flex items-center gap-4">
-              <span className="text-4xl font-bold tabular-nums text-white">
+              <span className="text-4xl font-bold tabular-nums text-foreground">
                 {model.rating_avg.toFixed(1)}
               </span>
               <div>

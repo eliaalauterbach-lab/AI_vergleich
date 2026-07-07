@@ -1,6 +1,6 @@
 # Einrichtung & Live-Schaltung — Schritt für Schritt
 
-Diese Anleitung bringt AI-Vergleich vom Demo-Modus in den echten Betrieb:
+Diese Anleitung bringt Modelist vom Demo-Modus in den echten Betrieb:
 Datenbank, Login und Automatisierung. **Kein Vorwissen nötig** — folge einfach
 den Schritten der Reihe nach. Alles hier ist mit dem kostenlosen Tarif machbar.
 
