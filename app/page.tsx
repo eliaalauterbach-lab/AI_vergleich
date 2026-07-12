@@ -41,7 +41,7 @@ export default async function HomePage() {
           {INDUSTRIES.slice(0, 8).map((ind) => (
             <Link
               key={ind.slug}
-              href={`/suche?branche=${ind.slug}`}
+              href={`/branchen/${ind.slug}`}
               className="card group flex items-start gap-3 p-4 transition-colors hover:border-accent/40 hover:bg-elevate"
             >
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent-dim text-accent-soft">
