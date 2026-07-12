@@ -57,15 +57,20 @@ Login und echtes Speichern (Bewertungen, Prompts, Votes) automatisch ein.
 
 ## Funktionsumfang
 
-- **Rangliste** (`/`) — performance-basiert, mit Kategorie-Filter
-- **Steckbriefe** (`/models/[slug]`) — Stärken/Schwächen, Benchmarks,
-  Community-Sterne, Live-Kosten-/Speed-Rechner
-- **Prompt-Bibliothek** (`/prompts`) — kategorisiert, Kopieren, Forking, Upvote,
-  Einreichen
+- **Entdecken** (`/`) — Problem-zuerst-Suche + Einstieg nach Branche & Aufgabe
+- **Modelle** (`/models`) — Bibliothek aller KI-Modelle; Steckbriefe
+  (`/models/[slug]`) mit Stärken/Schwächen, Benchmarks, Community-Sternen und
+  Live-Kosten-/Speed-Rechner
+- **Agenten** (`/agents`) — Verzeichnis fertiger KI-Tools/Assistenten mit eigenen
+  Steckbriefen; Basis für später selbst baubare Agenten
+- **Suche** (`/suche`) — Modelle + Agenten nach Freitext, Branche oder Aufgabe
+- **Branchen** (`/branchen`) — Einstieg pro Bereich (Software, Recht, Marketing …)
+- **Prompt-Bibliothek** (`/prompts`) — kategorisiert, Kopieren, Forking, Upvote
+- **Ranglisten** (`/ranglisten`) — performance-basiert nach Kategorie
 - **Blind-Test-Arena** (`/arena`) — anonymes Voting + Elo-Rangliste
-- **AI-Finder** (`/finder`) — geführte Modell-Empfehlung
+- **AI-Finder** (`/finder`) — geführte Empfehlung
 - **Login** (`/login`) — Magic Link (Supabase Auth)
-- **PWA** — installierbar auf Desktop & Smartphone
+- **Hell/Dunkel** nach Geräteeinstellung · **PWA** — installierbar
 
 ## Projektstatus
 

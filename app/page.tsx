@@ -1,101 +1,131 @@
 import Link from "next/link";
-import { Trophy, Search, Sparkles, GitFork } from "lucide-react";
+import { ArrowRight, Boxes, Bot } from "lucide-react";
 import { getLeaderboard } from "@/lib/data/leaderboard";
-import { Leaderboard } from "@/components/leaderboard/Leaderboard";
+import { getAgents } from "@/lib/data/agents";
+import { INDUSTRIES, USE_CASES } from "@/lib/data/taxonomy";
+import { SearchHero } from "@/components/discover/SearchHero";
+import { Icon } from "@/components/ui/Icon";
+import { ModelCard } from "@/components/models/ModelCard";
+import { AgentCard } from "@/components/agents/AgentCard";
 
-const CATEGORIES = [
-  { slug: "", label: "Gesamt" },
-  { slug: "text", label: "Text" },
-  { slug: "code", label: "Code" },
-  { slug: "image", label: "Bild" },
-  { slug: "video", label: "Video" },
-  { slug: "music", label: "Musik" },
-  { slug: "research", label: "Research" },
-];
-
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams: { cat?: string };
-}) {
-  const active = searchParams.cat ?? "";
-  const entries = await getLeaderboard(active || undefined);
+export default async function HomePage() {
+  const [models, agents] = await Promise.all([
+    getLeaderboard(),
+    getAgents(),
+  ]);
+  const topModels = models.slice(0, 4);
+  const topAgents = agents.slice(0, 4);
 
   return (
-    <main className="mx-auto max-w-5xl px-4 pb-24 pt-10 sm:px-6">
-      {/* ---------------- Hero ---------------- */}
-      <header className="mb-10 text-center">
-        <span className="chip mx-auto mb-4 w-fit">
-          <Sparkles size={13} className="text-accent-soft" />
-          Automatisch aktuell · via Hugging Face &amp; OpenRouter
-        </span>
+    <main className="mx-auto max-w-5xl px-4 pb-24 pt-12 sm:px-6">
+      {/* -------------------- Hero: Problem-Suche -------------------- */}
+      <section className="mb-14 text-center">
         <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-          Die Rangliste der{" "}
+          Finde die richtige{" "}
           <span className="bg-gradient-to-r from-accent-soft to-accent bg-clip-text text-transparent">
-            KI-Modelle
-          </span>
+            KI
+          </span>{" "}
+          für dein Problem
         </h1>
-        <p className="mx-auto mt-4 max-w-xl text-balance text-muted">
-          Gerankt rein nach Leistung — nicht nach Popularität. Text, Code, Bild,
-          Video, Musik &amp; Research in einer schlichten Übersicht.
+        <p className="mx-auto mb-8 mt-4 max-w-xl text-balance text-muted">
+          Die Bibliothek für KI-Modelle und Agenten — für jede Branche und jede
+          Aufgabe. Beschreibe, was du erreichen willst, und wir zeigen dir das
+          passende Werkzeug.
         </p>
+        <SearchHero />
+      </section>
 
-        {/* Sekundäre Einstiege */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-          <QuickLink href="/finder" icon={<Search size={14} />} label="AI Finder" />
-          <QuickLink href="/arena" icon={<Trophy size={14} />} label="Blind-Test Arena" />
-          <QuickLink href="/prompts" icon={<GitFork size={14} />} label="Prompt-Bibliothek" />
-        </div>
-      </header>
-
-      {/* ---------------- Kategorie-Filter ---------------- */}
-      <nav className="mb-5 flex flex-wrap items-center gap-2">
-        {CATEGORIES.map((c) => {
-          const isActive = active === c.slug;
-          return (
+      {/* -------------------- Nach Branche -------------------- */}
+      <Section title="Nach Branche entdecken" href="/branchen" linkLabel="Alle Branchen">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+          {INDUSTRIES.slice(0, 8).map((ind) => (
             <Link
-              key={c.slug || "all"}
-              href={c.slug ? `/?cat=${c.slug}` : "/"}
-              scroll={false}
-              className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
-                isActive
-                  ? "border-accent/40 bg-accent-dim text-accent-soft"
-                  : "border-border bg-surface text-muted hover:bg-elevate hover:text-subtle"
-              }`}
+              key={ind.slug}
+              href={`/suche?branche=${ind.slug}`}
+              className="card group flex items-start gap-3 p-4 transition-colors hover:border-accent/40 hover:bg-elevate"
             >
-              {c.label}
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-accent-dim text-accent-soft">
+                <Icon name={ind.icon} size={18} />
+              </span>
+              <span className="min-w-0">
+                <span className="block font-medium text-foreground group-hover:text-accent-soft">
+                  {ind.name}
+                </span>
+                <span className="line-clamp-1 text-xs text-muted">{ind.description}</span>
+              </span>
             </Link>
-          );
-        })}
-      </nav>
+          ))}
+        </div>
+      </Section>
 
-      {/* ---------------- Leaderboard ---------------- */}
-      <Leaderboard entries={entries} />
+      {/* -------------------- Nach Aufgabe -------------------- */}
+      <Section title="Nach Aufgabe entdecken">
+        <div className="flex flex-wrap gap-2">
+          {USE_CASES.map((uc) => (
+            <Link
+              key={uc.slug}
+              href={`/suche?task=${uc.slug}`}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-sm font-medium text-subtle transition-colors hover:border-accent/40 hover:text-foreground"
+            >
+              <Icon name={uc.icon} size={15} />
+              {uc.name}
+            </Link>
+          ))}
+        </div>
+      </Section>
 
-      <p className="mt-4 text-center text-xs text-muted">
-        Performance-Score = normalisierter Durchschnitt aus MMLU, HumanEval &amp;
-        Arena-Elo (0–100). Bewertungen stammen aus der Community.
-      </p>
+      {/* -------------------- Top-Modelle -------------------- */}
+      <Section title="Top-Modelle" href="/models" linkLabel="Alle Modelle" icon={<Boxes size={18} />}>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {topModels.map((m) => (
+            <ModelCard key={m.id} model={m} />
+          ))}
+        </div>
+      </Section>
+
+      {/* -------------------- Top-Agenten -------------------- */}
+      <Section title="Top-Agenten" href="/agents" linkLabel="Alle Agenten" icon={<Bot size={18} />}>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {topAgents.map((a) => (
+            <AgentCard key={a.id} agent={a} />
+          ))}
+        </div>
+      </Section>
     </main>
   );
 }
 
-function QuickLink({
+function Section({
+  title,
   href,
+  linkLabel,
   icon,
-  label,
+  children,
 }: {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
+  title: string;
+  href?: string;
+  linkLabel?: string;
+  icon?: React.ReactNode;
+  children: React.ReactNode;
 }) {
   return (
-    <Link
-      href={href}
-      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm text-subtle transition-colors hover:border-accent/40 hover:text-foreground"
-    >
-      {icon}
-      {label}
-    </Link>
+    <section className="mb-12">
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="flex items-center gap-2 text-lg font-semibold text-foreground">
+          {icon && <span className="text-accent-soft">{icon}</span>}
+          {title}
+        </h2>
+        {href && linkLabel && (
+          <Link
+            href={href}
+            className="inline-flex items-center gap-1 text-sm text-muted transition-colors hover:text-foreground"
+          >
+            {linkLabel}
+            <ArrowRight size={14} />
+          </Link>
+        )}
+      </div>
+      {children}
+    </section>
   );
 }

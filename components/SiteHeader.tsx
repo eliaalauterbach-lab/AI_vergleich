@@ -4,10 +4,12 @@ import { getUser } from "@/lib/auth";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV = [
-  { href: "/", label: "Rangliste" },
+  { href: "/", label: "Entdecken" },
+  { href: "/models", label: "Modelle" },
+  { href: "/agents", label: "Agenten" },
   { href: "/prompts", label: "Prompts" },
+  { href: "/ranglisten", label: "Ranglisten" },
   { href: "/arena", label: "Arena" },
-  { href: "/finder", label: "AI Finder" },
 ];
 
 /** Schlanke, sticky Kopfzeile – auf allen Seiten identisch. */

@@ -33,3 +33,11 @@ export function formatTokens(n: number | null): string {
   if (n >= 1_000) return `${Math.round(n / 1000)}k`;
   return String(n);
 }
+
+const PRICING_LABEL: Record<string, string> = {
+  free: "Kostenlos",
+  freemium: "Freemium",
+  paid: "Kostenpflichtig",
+};
+
+export const pricingLabel = (p: string): string => PRICING_LABEL[p] ?? p;

@@ -108,3 +108,44 @@ export interface FinderCandidate {
   throughput_tps: number | null;
   context_window: number | null;
 }
+
+// --- Taxonomie: Branchen & Aufgaben ----------------------------------------
+export interface Industry {
+  slug: string;
+  name: string;
+  icon: string;                        // Lucide-Icon-Name
+  description: string;
+}
+
+export interface UseCase {
+  slug: string;
+  name: string;
+  icon: string;
+}
+
+// --- Agenten (fertige KI-Tools/Assistenten auf Basis von Modellen) ---------
+export type PricingModel = "free" | "freemium" | "paid";
+
+export interface AgentSummary {
+  id: string;
+  slug: string;
+  name: string;
+  tagline: string;                     // Kurzbeschreibung (eine Zeile)
+  agent_type: string;                  // z.B. "Coding", "Research", "Marketing"
+  base_model: string | null;          // worauf der Agent aufbaut
+  pricing: PricingModel;
+  price_note: string | null;          // z.B. "ab $20/Monat"
+  industries: string[];                // Branchen-Slugs
+  tasks: string[];                     // Aufgaben-Slugs
+  rating_avg: number;                  // 0-5
+  rating_count: number;
+  website_url: string | null;
+  logo_url: string | null;
+  source: "tool" | "custom";           // fertiges Tool vs. selbst gebauter Agent
+}
+
+export interface AgentDetail extends AgentSummary {
+  description: string | null;          // längerer Beschreibungstext
+  pros_cons: ProCon[];
+  integrations: string[];              // z.B. "VS Code", "Slack", "API"
+}
